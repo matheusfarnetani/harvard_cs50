@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <cs50.h>
+#include <stdio.h>
 
 int start_population(void);
 int end_population(int start_number);
@@ -9,16 +9,16 @@ int main(void)
 {
     int start_llamas = start_population();
     int end_llamas = end_population(start_llamas);
-    int year = years(start_llamas, end_llamas);
 
-    // Print correct phrase
-    if (year == 1)
+
+    if (start_llamas == end_llamas)
     {
-        printf("It would take %i year.\n", year);
+        printf("Years: 0\n");
     }
     else
     {
-        printf("It would take %i years.\n", year);
+        int year = years(start_llamas, end_llamas);
+        printf("Years: %i\n", year);
     }
 }
 
@@ -28,10 +28,10 @@ int start_population(void)
     int start_number;
     do
     {
-        start_number = get_int("What's the starting number of llamas? ");
+        start_number = get_int("Start size: ");
     }
     while (start_number < 9); // Why 9? Because before 9 there is numbers that doesn't work, like 8 for example.
-    
+
     return start_number;
 }
 
@@ -41,10 +41,10 @@ int end_population(int start_number)
     int end_number;
     do
     {
-        end_number = get_int("What's the end number of llamas? ");
+        end_number = get_int("End size: ");
     }
-    while (end_number <= start_number);
-    
+    while (end_number < start_number);
+
     return end_number;
 }
 
@@ -63,6 +63,6 @@ int years(int start_number, int end_number)
         year += 1;
     }
     while (number < end_number);
-    
+
     return year;
 }
