@@ -1,92 +1,114 @@
+#include <cs50.h>
+#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 
-long long get_number(void);
-int sum_card(long long num);
-int sum_digit(int a);
+bool checkSum(long long number);
+string defineCard(long long number);
 
-int main(void) {
-    long long number = 0;
-    int mainsum = 0;
+int main(void)
+{
+    // Ask user for credit card number
+    long long number = get_long_long("Number: ");
 
-    number = get_number();
-
-    mainsum = sum_card(number);
-    printf("%d\n", mainsum);
-}
-
-long long get_number(void) {
-    long long num = 0;
-    int result = 0;
-    while (true)
+    string card;
+    if (checkSum(number))
     {
-        printf("Number: ");
-        result = scanf("%lld", &num);
-        if (result == 1) {
-            return num;
-        }
-        else {
-            printf("This program handles only numerical inputs.\n");
-            while (getchar() != '\n') {
-                continue;
-            }
-        }
+        card = defineCard(number);
     }
+    else
+    {
+        card = "INVALID";
+    }
+
+    printf("%s\n", card);
 }
 
-int sum_card(long long num) {
-    int numDigits = 0; // Number of digits in the number
-    long long temp = num;
+bool checkSum(long long number)
+{
+    int numDigits = 0;
+    long long temp = number;
 
     // Count the number of digits
-    while (temp != 0) {
+    while (temp != 0)
+    {
         temp /= 10;
         numDigits++;
     }
 
-    // Allocate memory for the array
-    int* digitArray = (int*)malloc(numDigits * sizeof(int));
+    int digitArray[numDigits];
 
     // Store each digit in the array
-    temp = num; // Use temp to keep the original value of num
-    for (int i = numDigits - 1; i >= 0; i--) {
+    temp = number;
+    for (int i = numDigits - 1; i >= 0; i--)
+    {
         digitArray[i] = temp % 10;
         temp /= 10;
     }
 
     int cardsum = 0;
 
-    // Iterate over the array and perform conditional operations
-    for (int i = 0; i < numDigits; i++) {
-        int a = 0;
-        if (i % 2 == 0) {
-            int b = digitArray[i] * 2;
-            if (b >= 10) {
-                a = sum_digit(b);
-            } else {
-                a = b;
-            }
-        } else {
-            a = digitArray[i];
+    // Iterate over the array and perform Luhn’s algorithm
+    for (int i = numDigits - 2; i >= 0; i -= 2)
+    {
+        int a = digitArray[i] * 2;
+
+        // Sum the digits of the result
+        while (a != 0)
+        {
+            cardsum += a % 10;
+            a /= 10;
         }
-        cardsum += a;
     }
 
-    // Free the dynamically allocated memory
-    free(digitArray);
+    // Sum the remaining digits
+    for (int i = numDigits - 1; i >= 0; i -= 2)
+    {
+        cardsum += digitArray[i];
+    }
 
-    return cardsum;
+    return (cardsum % 10) == 0;
 }
 
-int sum_digit(int a) {
-   int sum = 0;
-   int r;
+string defineCard(long long number)
+{
+    int numDigits = 0;
+    long long temp = number;
 
-   for (; a != 0; a = a / 10) {
-      r = a % 10;
-      sum += r;
-   }
+    // Count the number of digits
+    while (temp != 0)
+    {
+        temp /= 10;
+        numDigits++;
+    }
 
-   return sum;
+    int firstDigit = number / pow(10, numDigits - 1);
+    int firstTwoDigits = number / pow(10, numDigits - 2);
+
+    if (numDigits == 15)
+    {
+        if (firstTwoDigits == 34 || firstTwoDigits == 37)
+        {
+            return "AMEX";
+        }
+    }
+    else if (numDigits == 16)
+    {
+        if (firstTwoDigits >= 51 && firstTwoDigits <= 55)
+        {
+            return "MASTERCARD";
+        }
+        else if (firstDigit == 4)
+        {
+            return "VISA";
+        }
+    }
+    else if (numDigits == 13)
+    {
+        if (firstDigit == 4)
+        {
+            return "VISA";
+        }
+    }
+
+    return "INVALID";
 }
