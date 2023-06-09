@@ -1,0 +1,24 @@
+sort1 uses: Bubble Sort
+
+How do you know?: Knowing that Bubble and Selection Sort have the same big O value, but
+with a different big Omega, the best way to compare both of them would be using a sorted
+list of numbers. After testing 'sort1' with the biggest sorted list, I can confirm that
+'sort1' is a Bubble Sort algorithm because of its time performance being faster than
+the 'sort3', but lowest to 'sort2' that is a Merge Sort.
+
+sort2 uses: Merge Sort
+
+How do you know?: After testing all codes with all .txt files and analysing the results,
+I know that it is Merge Sort because this technique has the fastest big O and big Omega.
+Fact that is reflected in the time the program reached its conclusion, being the fastest
+to resolve a big random list of numbers, in comparison with Selection and Bubble Sort.
+
+sort3 uses: Selection Sort
+
+How do you know?: As explained in the first 'How do you know?', after realizing that the
+'sort2' uses a Merge Sort algorithm, due to its time performance with the list of random
+numbers and comparing 'sort1' and 'sort3' with the best case scenario, that its a sorted
+list of numbers, I can confirm that the 'sort3' uses a Selection Sort algorithm due to
+its difference between the big Omega of both algorithms that's reflected in time
+performance to confirm that the list of numbers is already sorted has taken more than
+the 'sort1' algorithm.
