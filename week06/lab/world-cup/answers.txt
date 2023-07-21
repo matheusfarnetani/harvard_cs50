@@ -1,0 +1,25 @@
+Times:
+
+10 simulations: 0m0.027s
+100 simulations: 0m0.027s
+1000 simulations: 0m0.034s
+10000 simulations: 0m0.095s
+100000 simulations: 0m0.748s
+1000000 simulations: 0m7.302s
+
+Questions:
+
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+
+With a small number of simulations, the results were different than with a bigger number of simulations.
+The first and second simulations were less than the total amount of combinations of rounds.
+Different then the higher values of N, where there is enough 'space' to the total combinations to happen once.
+As the number of simulations got higher the results turned to be more refineded and the podium of "Brazil";
+"Belgium": and "Spain" changed to be "Belgium"; "Brazil"; and "Portugal".
+
+Suppose you're charged a fee for each second of compute time your program uses.
+After how many simulations would you call the predictions "good enough"?:
+
+After 10000 simulations the predictions seem to be more stabilized.
+After this point, the numbers don't have great changes and the result stays the same for the top 3 teams.
+And it is the last value of simulations, used in the analysis, that had a time significantly lower than its next value.
