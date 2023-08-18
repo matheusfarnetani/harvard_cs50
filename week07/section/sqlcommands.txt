@@ -1,0 +1,191 @@
+sqlite3 roster.db                   || opens database
+.quit                               || exits sqlite3
+
+.read <name of .sql file>
+
+.schema                             || shows tables schema
+
+
+SELECT * FROM students;             || selects all info from table students
+
+
+SELECT student_name FROM students;  || selects all student_name (colum) from table students
+
+
+SELECT student_name, house          || shows both columns student name
+FROM students                       || from the table students
+WHERE house = 'Slytherin';          || where column house meets condition
+
+
+SELECT student_name                 || show colum student_name
+FROM students                       || from the table students
+WHERE student_name LIKE '%Potter';  || where the name ends with 'Potter'
+
+
+SELECT student_name, house          || show colum name and house
+FROM students                       || from the table students
+WHERE student_name LIKE 'H%';       || where name starts with 'H'
+
+
+SELECT * FROM students              || shows everything from students
+ORDER BY student_name;              || by default is ascending order
+ORDER BY student_name DESC;         || you can specify (ASC and DESC)
+
+
+SELECT * FROM students              || shows everything from students
+ORDER BY house;                     || ordering by column house in ascending order
+
+
+SELECT * FROM students              || shows everything from students
+ORDER BY house, student_name;       || order first by column house then by name
+
+
+SELECT * FROM students              || shows everything from students
+ORDER BY house, student_name DESC;  || order first by column house, in ascending order, then by name, in descending order
+
+
+SELECT * FROM students              || shows everything from students
+ORDER BY student_name               || order by name in ascending order
+LIMIT 10;                           || shows only the first 10 rows
+
+SELECT * FROM students              || shows everything from students
+ORDER BY student_name DESC          || order by name in descending order
+LIMIT 10;                           || shows only the first 10 rows
+
+
+AGGREGATING
+
+SELECT COUNT(*)                     || select everything and count each one
+FROM students;                      || from table students
+
+SELECT COUNT(*) as number_of_students       || select everything and count each one and name it 'number_of_students'
+FROM students;                              || from table students
+
+SELECT count(*) FROM students       || selects everything and count in table student
+WHERE house = 'Gryffindor';         || filter by 'Gryffindor' in house column
+
+
+GROUP BY
+
+SELECT * FROM students              || shows everything from table student
+GROUP BY house;                     || grouping by house
+
+SELECT COUNT(*) FROM students       || selects everything and count
+GROUP BY house;                     || grouping by house (count of each instance in group)
+
+
+Design Principles
+    a - Each table should be a collection of a single entity
+            For example, we should have different table for each
+            of students, houses and student-house assignments.
+    b - Each piece of data should be stored in a single location,
+    and thereafter referred to by its ID ("primary key").
+            For example, we should ensure every student and house
+            has an ID, then use those IDs in the house assignments table.
+
+With the database of example divide the main table into 3 different ones
+    1 - One containing the 'id' and the name of student
+    2 - Other with the 'id' and name of houses and each head
+    3 - And a third one to assign everything jogether with each 'id'
+    combination and respectivily each student 'id' and house 'id'
+
+CREATE TABLE table_name (
+    column1 datatype1,
+    column2 datatype2,
+    ...
+    referenced_column datatype REFERENCES referenced_table(referenced_column_primary_key)
+);
+
+Let's break down the syntax:
+    1 - table_name: The name of the new table you want to create.
+    2 - column1, column2, etc.: The columns you want to include in the new table.
+    3 - datatype1, datatype2, etc.: The data types for each column.
+    4 - referenced_column: The column in the new table that will reference the primary key of the other table.
+    5 - datatype: The data type of the column that references the primary key.
+    6 - referenced_table: The name of the table containing the primary key you want to reference.
+    7 - referenced_column_primary_key: The primary key column in the referenced table.
+
+CREATE TABLE houses (               || create table houses
+    id INTEGER NOT NULL,            || with requireded id column, type 'integer'
+    house TEXT NOT NULL,            || with requireded house column, type 'text'
+    head TEXT NOT NULL,             || with requireded head column, type 'text'
+    PRIMARY KEY (id)                || With column ID being 'primary key' (unique value and autoincrement)
+);
+
+CREATE TABLE assignments (
+    student_id INTEGER,
+    house_id INTEGER,
+    FOREIGN KEY(student_id) REFERENCES students(id),
+    FOREIGN KEY(house_id) REFERENCES houses(id),
+    PRIMARY KEY(student_id, house_id)
+);
+
+.schema                             || shows all tables structures
+
+
+INSERT VALUE INTO TABLE
+
+INSERT INTO table (column1, column2)    ||
+VALUES (value1, value2);                ||
+
+INSERT INTO houses (house, head)        ||
+VALUES ('Gryffindor', 'McGonagall');    ||
+
+INSERT INTO houses (house, head)        ||
+VALUES ('Slytherin', 'Severus Snape');  ||
+
+INSERT INTO houses (house, head)
+VALUES ('Hufflepuff', 'Pomona Sprout');
+
+INSERT into houses (house, head)
+VALUES ('Ravenclaw', 'Filius Flitwick');
+
+
+SELECTs && JOINs
+
+SELECT id 
+FROM houses
+WHERE house = 'Gryffindor';
+
+SELECT COUNT(student_id)
+FROM assignments
+WHERE house_id = 3;
+
+SELECT COUNT(student_id)
+FROM assignments
+WHERE house_id =
+(
+    SELECT id
+    FROM houses
+    WHERE house = "Gryffindor'
+);
+
+SELECT * FROM assignments
+JOIN houses
+ON assignments.house_id = houses.id;
+
+SELECT COUNT(student_id) FROM assignments
+JOIN houses ON houses.id = assignments.house_id
+WHERE houses.house = 'Gryffindor';
+
+SELECT * FROM assignments
+JOIN houses ON houses.id = assignments.house_id;
+
+SELECT house, COUNT(student_id)
+FROM assignments
+JOIN houses ON houses.id = assignments.house_id
+GROUP BY house;
+
+SELECT * FROM students
+JOIN assignments ON students.id = assignments.student_id
+JOIN houses ON houses.id = assignments.house_id;
+
+SELECT * FROM students
+JOIN assignments ON assignments.student_id = students.id
+JOIN houses ON houses.id = assignments.house_id
+GROUP BY house;
+
+SELECT * FROM students
+JOIN assignments ON assignments.student_id = students.id
+JOIN houses ON houses.id = assignments.house_id
+ORDER BY house;

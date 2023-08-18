@@ -1,0 +1,60 @@
+To achieve your goal of creating the assignments table automatically
+with each student's ID referencing a house's ID and then removing
+the house and head columns from the students table, you'll need to
+follow these steps:
+
+    Populate the houses table with unique house data.
+    Create the assignments table by inserting all the student IDs and their corresponding house IDs.
+    Remove the house and head columns from the students table.
+    Here's a step-by-step guide on how to achieve this:
+
+
+Step 1: Populate the houses table with unique house data:
+
+    You can manually insert the house data into the houses table.
+    Since it seems that the house information is unique, you can use an
+    INSERT INTO statement to add each unique house along with its head
+    into the houses table.
+
+-- Example of populating the 'houses' table
+INSERT INTO houses (house, head) VALUES
+    ('Slytherin', 'Severus Snape'),
+    ('Ravenclaw', 'Filius Flitwick'),
+    ('Hufflepuff', 'Pomona Sprout'),
+    ('Gryffindor', 'Minerva McGonagall');
+
+
+Step 2: Create the assignments table by inserting all the student IDs
+and their corresponding house IDs:
+
+    You can use an INSERT INTO statement with a SELECT query to populate
+    the assignments table based on the existing data in the students table
+    and the houses table.
+
+-- Create the 'assignments' table and populate it with student IDs and their corresponding house IDs
+INSERT INTO assignments (student_id, house_id)
+SELECT students.id, houses.id
+FROM students
+JOIN houses ON students.house = houses.house;
+
+
+Step 3: Remove the house and head columns from the students table:
+
+    After verifying that the data has been successfully inserted into
+    the assignments table, you can remove the house and head columns
+    from the students table.
+
+-- Remove the 'house' and 'head' columns from the 'students' table
+ALTER TABLE students DROP COLUMN house;
+ALTER TABLE students DROP COLUMN head;
+
+
+Please make sure to back up your database before making any
+structural changes to the tables.
+
+After following these steps, the assignments table should be
+populated with the student IDs and their corresponding house IDs,
+and the students table should no longer contain the house and
+head columns. The data is now properly normalized with the help of
+the houses table and the foreign key relationship in the
+assignments table.

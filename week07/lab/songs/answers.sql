@@ -1,0 +1,1 @@
+SELECT AVG(danceability), AVG(energy), AVG(loudness), AVG(speechiness), AVG(valence), AVG(tempo), AVG(duration_ms) FROM songs

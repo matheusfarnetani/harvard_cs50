@@ -1,0 +1,56 @@
+If songs.db contains the top 100 songs of one listener from 2018,
+how would you characterize their audio aura?
+
+Using the average of the following columns of the database:
+
+danceability = 0.71646,
+energy = 0.65906,
+loudness = -5.67764,
+speechiness = 0.115569,
+valence = 0.484443,
+tempo = 119.90418,
+duration_ms - 205206.78;
+
+As parameters to be analysed and used as criteria to categorise, the
+respective person, in order to be attached in one of the groups
+presented by spotify: 'Purple', 'Green', 'Pink', 'Orange', 'Yellow'
+and 'Blue', and the definition of each being elaborated by the Mystic
+Michaela.
+
+The fictional person presented, by the exercise, seems to like
+listening to danceable and speechless music, with a medium tempo and
+high energy, but not as energetic to 'make you lose control'.
+
+And with a conclusion of brief analysis, the fictional person seems to
+have a 'Purple' aura: "Purple auras tune in to get amped up, entertained,
+and moving while they navigate the twists and turns of their day.". The
+definition presented by spotify and it's team, seems to fit for the
+person, as it has the feeling being entertained and this feeling being
+passive of being represented as the verb of 'dance'.
+
+
+Hypothesize about why the way you’ve calculated this aura
+might not be very representative of the listener.
+What better ways of calculating this aura would you propose?
+
+The mathematical operations and relationships of the concepts that
+revolve around the topic of social groups being classified by numeric
+values obtained by, at the moment, an unknown source, it's out of my reach.
+
+Developing concepts and parameters, as the spotify team did, it's one way
+of doing. Maybe for others, other values would be of more important then
+the group of values presented. For example, the 'notes' or better, the
+'scale' could categorise a mood and be used as a parameter. The idea of 'scale',
+would need new concepts and new ways of grouping, as a more progressive
+song could be difficult to have a 'scale' defined as it could start in
+a certain mood and as the whole song develops it could end with
+different mood with different meanings that could change the whole
+idea of the beginning.
+
+The presented complexity surrounds music. It is one way of looking at it
+and it's more complex to be translated into numbers as it could escape from
+the mathematical field and reaching different fields of interpretation of
+reality. The same goes with grouping humans, living beings, by numerical
+values as it always has imperfections and 'scape rules'. The spotify's
+marketing idea has its value and the tools of grouping has its importance
+as well as it could reveal information only visible when grouping.
