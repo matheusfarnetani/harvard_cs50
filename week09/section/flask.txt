@@ -1,0 +1,198 @@
+Flask
+
+Python is not just used for command-line programming, though that's a
+a major use case.
+
+Python contains native functionality to support networking and more,
+enabling site backends to be written in Python.
+
+Web frameworks make this process much easir, abstracting away the minutia
+of Python's syntax and providing helper funtions.
+
+Some of the most popular include: Django, Pyramid and Flask.
+
+We use Flask in CS50 because it is lightweight for ease of use in CS50 IDE,
+while still being feature-rich.
+
+We know that we can use HTML to build websites, but websites built using
+pure HTML suffer from a serious limitation.
+
+Imagine we want to create a website that displays the current time in
+Cambridge, MA, displaying it to the latest minute.
+
+    <html>
+        <head>
+            <title>Current Time in Cambridge</title>
+        </head>
+        <body>
+            The current time in Cambridge is 14:08
+        </body>
+    </html>
+
+Websites that are pure HTML are completely static. The only way we can
+update the content of our pages is to manually open up our source files,
+edit and save, and then the next time the user visits or refreshes the 
+page they'll get the content.
+
+Incorporating Python into our code can make our code quite a bit more
+flexible and introduce a way for our pages to update or be dynamic
+without requiring our intervention.
+
+    from flask import Flask
+    from datetime import datetime
+    from pytz import timezone
+
+    app = Flask(__name__)
+
+    @app.route("/")
+    def time():
+        now = datetime.now(timezone('Ameriza/New_York'))
+        return "The current date and time in Cambridge is {}".format(now)
+
+
+It's pretty simple to get started using Flask within CS50 IDE.
+
+    from flask import Flask
+
+After importing the Flask module, we need to initiate a Flask application.
+
+    app = Flask(__name__)
+
+From there, it's jut a matter of writing functions that define the 
+behavior of our application.
+
+    @app.route("/")
+    def index():
+        return "You are at the index page!"
+
+    @app.route("/sample")
+    def sample():
+        return "You are on the sample page!"
+
+The lines just added are known as "decorators". They are used, in Flask,
+to associate a particular function with a particular URL.
+
+Decorators also have more general use in Python, but that goes beyond
+the scope of CS50.
+
+It's also quite straightforward to run our Flask application within
+CS50 IDE.
+
+    export FLASK_APP=application.py
+    export FLASK_DEBUG=1
+    flask run
+
+We do that in three steps, the first two of which you only have to run
+once. First thing you have to do is export the Flask app. Flask app is a
+system variable and it's going to become stored in the memory of your
+IDE specifically, so that if you ever run an application again, it knows
+exactly which application to run.
+
+So we're basically just saving in memory somewhere the location of our
+Flask application. It's being stored in a system variable. So
+'export FLASK_APP=application.py', because that's the name of our file.
+
+The second line is technically optional but it's recommended particularly
+as you get started. 'export FLASK_DEBUG=1'. 1 here just basically
+means true. So basically you're going to be running it so that when you
+run your flask application in your IDE, you are seeing all of the things
+that it's doing in debug mode. So if something goes wrong, it will get
+printed out to your terminal, you'll see it. It's not like your site will
+just crash and you won't know what happened.
+
+And then after executing those two lines of code, again, in our IDE,
+just executing those two commands, rather, in our IDE, 'flask run'. And
+then what will happen specifically in your IDE, is it will take about
+a second to spin up and then it'll give you a URL that you can click on
+and visit, which will be the home page of your application.
+
+Again, after the first time you get configured with the particular
+application you want to run, you can leave these two blue lines out,
+you won't need them again. You can just continue to type 'flask run' and
+it will continue to run that same application over and over until you no
+longer want to run it. And then you would export a different application,
+export a different debug mode, and so on.
+
+
+Data can be passed in via URLs, aking to using HTTP GET.
+
+    @app.route("/show/<number>")
+    def show(number):
+        return "You passed in {}".format(number)
+    
+Data can be passed in via HTML forms, as with HTTP POST, but we need to 
+indicate that Flask should respond to HTTP POST request explicitly.
+
+    @app.route("/login", methods=['GET', 'POST'])
+    def login():
+        if not request.form.get("username")
+            return apology("must provide username")
+
+We could also vary the behavior of our function depending on the type of
+HTTP request received:
+
+    @app.route("/login", methods=['GET', 'POST'])
+    def login():
+        if request.method == "POST":
+            # do one thing
+        else
+            # do a different thing
+
+Flask has a number of functions within its module that will be useful for
+application development.
+
+    url_for()
+
+So this allows me to define a function and have a decorator associated
+with it. And maybe that decorator specifies that the URL here is really
+long or, for whatever reason, not that helpful. What I can do here is
+instead of specifying the exact URL I want to go to, I can say what I
+want you to do here is go to the URL for whatever function it is. So say
+my login function was associated with some URL that was like 50 characters
+long. Here, I could just pass in, instead of typing out that 50
+character long URL where I wanted to use it, I could just say 'url_for(login())'.
+
+    redirect()
+
+Redirect, as you might expect, is Flask's function that redirects you
+from one page to another.
+
+    session()
+
+Session is useful for HTTP session data. As we've talked about get and
+post, you may recall that there's also a third. And there are a few
+others but there's another thing we would use called a session variable.
+It's not necessarily an HTTP thing but it's usually stored in the headers
+there as well. And we can use that, for example, to track that a user is
+logged in. And constantly check that they are logged in even if they're
+going to different pages on our site. So a session is used sort of like a
+global variable. It's accessible by all pages. If you establish a session,
+you can store data in the session for the user as well.
+
+    render_template()
+
+Render template is used to create pages on your site that mix HTML and
+Python together. So I might render a template, for example, where that
+template is the form that I want to show to the user, the form I was
+talking about on an earlier slide. I might have an HTML template where
+I've written the general form there. And I might render a template and
+reference in the parentheses there the HTML for the form that I was just
+talking about. And you can do some other cool things too where you mix
+HTML and Python together using a language called Jinja, which is going
+to be beyond the scope of this particular video. But if you want to get
+more information about what you can do in the Flask quickstart guide and
+you really can get started pretty quickly with it, the URL is there.
+
+http://flask.pocoo.org/docs/0.12/quickstart/
+
+And if you want to learn about Jinja and how you can mix HTML and Python
+together to create basic templates where you can maybe substitute a 
+couple of different things in depending on what the user has submitted 
+via a get or post request. You can get some information on Jinja there. 
+
+http://jinja.pocoo.org/
+
+Jinja is Python-inspired syntax. So some of the things that you'll be 
+familiar with from Python syntax will be relevant there. But there are 
+a couple of little twists as well. And you can learn more about Jinja at 
+that URL there as well. I'm Doug Lloyd. This is CS50.

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <h2>Edit Birthday</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Month</th>
+        <th>Day</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ name }}</td>
+        <td>{{ month }}</td>
+        <td>{{ day }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="container">
+    <form action="/edit/{{ id }}" method="post">
+      <input autocomplete="off" autofocus name="new-name" placeholder="New name" type="text">
+      <input id="datepicker" name="new_selected_date" placeholder="Date" type="text">
+      <button>submit</button>
+    </form>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#datepicker").datepicker({
+        changeYear: true,
+        changeMonth: true,
+        yearRange: "1900:2030",
+      });
+    });
+  </script>
+
+{% endblock %}
