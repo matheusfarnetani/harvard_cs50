@@ -1,0 +1,127 @@
+body {
+    background-color: #fdffff;
+}
+
+/* Navigation Bar CSS */
+
+nav {
+    background-color: #fdffff;
+    border-bottom: 5px solid #00467c;
+}
+
+a.navbar-brand {
+    color: #090200;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+a.navbar-brand:hover {
+    color: #eb3516;
+}
+
+.nav-item {
+    margin-left: 1.5rem;
+}
+
+a.nav-link {
+    color: #090200;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+a.nav-link:hover {
+    color: #eb3516;
+}
+
+/* Homepage CSS */
+
+#about {
+    text-align: left;
+    font-size: 1.6rem;
+    color: #eb3516;
+}
+
+hr {
+    color: #89d388;
+    opacity: .75;
+}
+
+span {
+    color: #00467c;
+}
+
+p {
+    color: #00467c;
+}
+
+.btn.btn-primary {
+    background-color: #eb3516;
+    border: none;
+    color: #fdffff;
+}
+
+a.btn.btn-primary:hover {
+    opacity: .9;
+}
+
+.accordion {
+    margin-top: 1.3rem;
+}
+
+.accordion-item {
+    border-color: #89d388;
+}
+
+.accordion-button {
+    color: #123046;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #123046;
+    color: #fdffff;
+}
+
+.accordion-body > div > div > span.fw-medium {
+    color: #eb3516;
+}
+
+.accordion-body > div > div > div > span.fw-medium {
+    color: #eb3516;
+}
+
+h3 {
+    color: #eb3516;
+}
+
+h4 {
+    color: #123046;
+}
+
+div.contact > label {
+    color: #00467c;
+}
+
+div.contact > input {
+    border-color: #89d388;
+}
+
+div.contact > textarea {
+    border-color: #89d388;
+}
+
+div.contact > #email-help {
+    color: #89d388;
+}
+
+div.contact > #phone-help {
+    color: #89d388;
+}
+
+
+
+.separator {
+    height: 10px;
+    display: inline-block;
+    border-left: 2px solid #999;
+    margin: 0px 10px;
+}

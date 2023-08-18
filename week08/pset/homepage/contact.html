@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <link href="styles.css" rel="stylesheet">
+  <title>Matheus Farnetani</title>
+  <script src="main.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid mx-3">
+      <a href="index.html" class="navbar-brand">Matheus Farnetani Friedrich</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="experience.html">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="education.html">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <div class="contact container">
+          <span class="fs-5 fw-regular">Contact Me</span>
+          <br>
+          <span class="fs-3 fw-bold">Let's create something cool together!</span>
+          <br>
+          <span class="fs-4 fw-regular">Send me a message and I'll get your questions answered as soon as possible.</span>
+        </div>
+      </div>
+      <div class="col">
+        <form id="contact-form">
+          <div class="contact mb-3">
+            <label for="first-name" class="form-label">First name*</label>
+            <input type="submitted-name" class="form-control" id="first-name">
+          </div>
+          <div class=" contact mb-3">
+            <label for="last-name" class="form-label">Last name*</label>
+            <input type="submitted-name" class="form-control" id="last-name">
+          </div>
+          <div class="contact mb-3">
+            <label for="input-email " class="form-label">Email address*</label>
+            <input type="email" class="form-control" id="input-email" aria-describedby="email-help">
+            <div id="email-help" class="form-text">I'll never share your email with anyone else.</div>
+          </div>
+          <div class="contact mb-3">
+            <label for="input-phone" class="form-label">Phone number*</label>
+            <input type="tel" class="form-control" id="input-phone" aria-describedby="phone-help">
+            <div id="phone-help" class="form-text">I'll never share your phone number with anyone else.</div>
+          </div>
+          <div class="contact mb-3">
+            <label for="input-time" class="form-label">Best time to contact you?</label>
+            <input type="text" class="form-control" id="input-time">
+          </div>
+          <div class="contact mb-3">
+            <label for="input-info">Do you have any additional information?</label>
+            <textarea class="form-control" id="input-info"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
