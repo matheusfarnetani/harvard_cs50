@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+    <header>
+      <img class="logo" src="images/Logo-RS.png" alt="Radio Shack's logo."/>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#title-story">Story</a></li>
+          <li><a href="#title-team">Team</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Brand</a></li>
+          <li><a href="#">Products</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#"><button>Contact</button></a>
+    </header>
+
+    <main>
+      <img class="img-header" src="images/Header.png" alt="An abstract red image.">
+      
+      <div class="section-story">
+        <h1 id="title-story">Our Story</h1>
+        <h2>RadioShack is an American chain of consumer electronics stores since 1921.</h2>
+        <p class="first">In 1998 it began operations with Unicomer Group in Central America as a North American style store selling technology products and accessories.</p>
+        <p class="second">In 2015, Unicomer Group acquired RadioShack International Brand, Intellectual Property and Franchise rights for Central America, South America, and the Caribbean.</p>
+        <p class="second">In 2023, Unicomer Group acquired RadioShack‘s intellectual property assets and domains in about 70 countries around the world, including: the United States, Canada, Europe, and China; and aims to manage the business of technology products with excellence, generating long–term profitable relationships with our partners.</p>
+        <p class="second">This acquisition consolidates Unicomer Group as the majority owner of the brand worldwide, leading the technology market and expanding its value offer for its clients.</p>
+        <p class="second">We want to continue developing the business, in as many territories as possible, creating support plans for operations, reaching our customers with our broad portfolio of products, looking for the best prices and constant innovation to provide solutions to technological problems.</p>
+        <p class="second">“A company is only as good as the people it has“.</p>
+        <div class="div-img-store">
+            <img class="img-store" src="images/store.jpg" alt="Store's image.">
+        </div>
+      </div>
+
+      <div class="section-team">
+        <h1 id="title-team">Our Team</h1>
+        <h2>“A company is only as good as the people it has”.</h2>
+        <p>We believe in the power of teamwork. We know that when we combine our skills, knowledge and passion, we can achieve goals that seemed unattainable.</p>
+        
+        <!-- Image slider start -->
+        <div class="slider">
+          <div class="slides">
+            <!-- Radio buttons start -->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <!-- Radio buttons start -->
+            <!-- Slide images start -->
+            <div class="slide first">
+              <img src="images/carousel0.jpg" alt="Team's photo #1">
+            </div>
+            <div class="slide">
+              <img src="images/carousel1.jpg" alt="Team's photo #2">
+            </div>
+            <div class="slide">
+              <img src="images/carousel2.jpg" alt="Team's photo #3">
+            </div>
+            <div class="slide">
+              <img src="images/carousel3.jpg" alt="Team's photo #4">
+            </div>
+            <!-- Slide images end -->
+            <!-- Automatic nagivation start -->
+            <div class="navigation-atuo">
+              <div class="auto-btn1"></div>
+              <div class="auto-btn2"></div>
+              <div class="auto-btn3"></div>
+              <div class="auto-btn4"></div>
+            </div>
+            <!-- Automatic nagivation end -->
+          </div>
+          <!-- Manual navigation start -->
+          <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+          </div>
+          <!-- Manual navigation end -->
+        </div>
+        <!-- Image slider end -->
+
+        <script type="text/javascript">
+          var counter = 1;
+          setInterval(function() {
+            document.getElementById('radio' + counter).checked = true;
+            counter ++;
+            if (counter > 4) {
+              counter = 1;
+            }
+          }, 5000);
+        </script>
+
+        <p>Together, we form a resilient and committed team, ready to face any obstacle with determination. We seek learning opportunities, challenge limits and constantly reinvent ourselves. Every day is an opportunity to expand our horizons and discover new paths to success.</p>
+        
+      </div>
+
+    </main>
+  </body>
+</html>

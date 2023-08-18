@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+    <script>
+        // TODO: Add code to check answers to questions
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // After page is loaded do the following
+            const m_buttons = document.querySelectorAll('div.button-group > button.answer');
+            const outputs = document.querySelectorAll('div.button-group > div.button-output');
+
+            // Create event for each button
+            m_buttons.forEach((button, index) => {
+                button.addEventListener('click', function () {
+
+                    // Save content from button and create empty message.
+                    const buttonContent = button.textContent;
+                    let message = '';
+
+                    // Clean previous attempt
+                    outputs.forEach(output => {
+                        output.textContent = '';
+                    });
+
+                    m_buttons.forEach(button => {
+                        button.style.backgroundColor = '#d9edff';
+                    });
+
+                    // Check which button was clicked
+                    if (buttonContent == 'Monaco') {
+                        message = 'Correct!';
+                        button.style.backgroundColor = '#E1FFBF';
+                    }
+                    else {
+                        message = 'Incorrect.';
+                        button.style.backgroundColor = '#FFC2BF';
+                    }
+
+                    // Update output content
+                    outputs[index].textContent = message;
+                });
+            });
+
+            // Create necessary variables
+            const form = document.getElementById('trivia-form');
+            const answerInput = document.getElementById('text-answer');
+            const formOutput = document.getElementById('form-output');
+
+            // Add event 'submit' to form
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const userAnswer = answerInput.value.trim().toLowerCase();
+
+                if (userAnswer === 'antarctica') {
+                    formOutput.textContent = 'Correct!';
+                } else {
+                    formOutput.textContent = 'Incorrect.';
+                }
+
+                // Clear the input after submitting
+                answerInput.value = '';
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+            <!-- TODO: Add multiple choice question here -->
+            <h3>What country has the highest life expectancy, in 2023?</h3>
+
+            <div class="button-container">
+                <div class="button-group">
+                    <button type="submit" class="answer">Macau</button>
+                    <div class="button-output"></div>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="answer">Hong Kong</button>
+                    <div class="button-output"></div>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="answer">Monaco</button>
+                    <div class="button-output"></div>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="answer">Japan</button>
+                    <div class="button-output"></div>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="answer">Liechtenstein</button>
+                    <div class="button-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <!-- TODO: Add free response question here -->
+            <h3>On what continent would you find the world’s largest desert?</h3>
+            <div id="form-output"></div>
+            <form id="trivia-form">
+                <input autocomplete="off" id="text-answer" type="text">
+                <button type="submit">Check Answers</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
