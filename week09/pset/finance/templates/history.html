@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <h3>History</h3>
+</div>
+
+<div class="container">
+  {% if user_history %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Stock Name</th>
+        <th>Shares</th>
+        <th>Shares Value</th>
+        <th>Total Value</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for history in user_history %}
+      <tr>
+        <td>{{ history["type"] }}</td>
+        <td>{{ history["stock_name"] }}</td>
+        <td>{{ history["total_shares"] }}</td>
+        <td>{{ history["share_value"] }}</td>
+        <td>{{ history["transaction_value"] }}</td>
+        <td>{{ history["transaction_date"] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p>No data available</p>
+{% endif %}
+
+{% endblock %}

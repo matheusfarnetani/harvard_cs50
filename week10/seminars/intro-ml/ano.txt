@@ -1,0 +1,140 @@
+Machine Learning
+
+1. Unsupervised Learning
+    Autoencoders
+    Clustering
+    Anomaly detection
+    Association
+
+2. Supervised Learning
+    Regression
+        Linear Regression
+        SVR (Support Vector Regression)
+        Regression tree
+
+    Classification
+        Logistic Regression
+        Naive Bayes
+        Decision tree
+        K Nearest Neighbors
+
+3. Reiforcement Learning
+    Value-based
+    Policy-based
+    Model-based
+
+Machine learning is a process of introduzing data into the machine,
+and let it process the important part of the data.
+
+Supervised Learning
+    Given some labeled data, how can machines learn to predict
+    labels that generalize to unseen data?
+
+Unsupervised Learning
+    Given some unlabeled data, how can machines learn to find
+    useful patterns or generalizations?
+
+
+General Outline in ML project
+
+    1. Data Collection
+        Finding sources of data:
+            Scrapping it from websites, API calls, or readily
+            available datasets from Kaggle.
+        ** Scrapping raw data without cleaning might take a 
+        long time to clean **
+
+    2. Data Exploration
+        Be caraful of noisy, high dimensional data; heatmap
+        in trying to understand relations, or detecting biases
+        in labels (so as not to affect accuracy)
+
+    3. Choosing ML models
+        Choose a simple model to start with based on the type
+        of question: Supervised (Regression or Classification)/Unsupervised
+
+    4. Result & Improvise
+        Get the model perfomance and try to test it out with
+        different ML models to check wheter it improves accuracy
+        (Example: Linear Regression -> Logistics Regression -> Neural Network)
+    
+ML can be a tool, for data science, to know what a big 
+amount of data can show
+
+For CS50 final project:
+    Reasonable consideration
+        It might require lots of data cleaning and parameter
+        tuning to not underfit/overfil the data
+    
+    Only consider if:
+        You have background in ML, Python and strong grasp on
+        the ML concept
+
+        ** Required hyperparameter tuning and selection
+        of activation function**
+    
+    Supervised Learning -> Unsupervised Learning -> Reinforcement 
+    Learning -> Deep learning, CNN, RNN, GAN, ...
+
+
+Coding environment
+    - Jupyter Notebook:
+        - Deepnote
+        - VSCode
+        - Python Jupyter Notebook
+    - Python File
+        - Recommended if you want to integrate it to a website
+          (ie: Python Flask web app)
+    - Google Collab (GPU requirements)
+        - Cloud Computing
+
+Useful Python libraries for ML: Data
+    Data Mining:
+        BeautifulSoup
+        Scrapy
+    
+    Data Source:
+        Kaggle
+        UCI ML repository
+        Scrap from website
+        API calls
+    
+    Data processing
+        Pandas
+        Numpy
+        Scipy
+
+Useful Python libraries for ML: Visualizations
+    For data visualization:
+        - Matplolib
+        - Seaborn
+        - Plotly
+
+Useful Python libraries for ML: ML models
+    Sklearn:
+        Various calssification, regression and clustering algorithms
+    Tensorflow:
+        Various tasks, but particular focus on training and inference
+        of deep neural networks
+    Pytorch:
+        Neural network, computer vision and natural language processing
+    Keras:
+        Primarily for developing and evaluating deep learning models
+
+ML Resources & Support
+    Ed
+    CS50 Intro to Artificial Intelligence
+    Python Libraries Documentation
+    Kaggle
+    Towards Data Science blog
+    Machine learning mastery blog
+    Stack Overflow
+    Github
+
+ML Ethics
+    Deep Fake Example in CS50
+    Prof Finale Doshi-Valez: THe importance of explainability in API
+    MIT 6.S191:AI biases & Fairness
+    AI robustness
+    The Alignment Problem: Aligning ML with human values
+    Alan Turing Institute: Fairness, transparency, privacy

@@ -125,3 +125,6 @@ def delete_confirm(id):
 @app.route("/delete/cancel", methods=["POST"])
 def delete_cancel():
     return redirect("/")
+
+if __name__ == '__main__':
+    app.run(debug=True, port=8001)

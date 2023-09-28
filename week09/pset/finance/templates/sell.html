@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sell
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <h3>Sell shares</h3>
+</div>
+
+<div class="container mt-3">
+  <form action="/sell" method="post">
+    <div class="mb-3">
+      <select class="form-control mx-auto w-auto" id="symbol" name="symbol">
+        {% for data in user_data %}
+        <option value="{{ data['stock_name'] }}" {% if data['stock_name'] == symbol %}selected{% endif %}>{{ data['stock_name'] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <input autocomplete="off" class="form-control mx-auto w-auto" id="shares" name="shares"
+        placeholder="Number of shares" type="number">
+    </div>
+    <button class="btn btn-primary" type="submit">Sell stock</button>
+  </form>
+</div>
+
+{% endblock %}

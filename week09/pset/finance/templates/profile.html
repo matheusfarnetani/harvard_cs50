@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <h3>Profile</h3>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col text-start">
+      <span class="user-info fs-6 fw-normal">username</span><br>
+      <span class="fs-4 fw-medium">{{ username }}</span><br><br>
+      <span class="user-info fs-6 fw-normal">password</span><br>
+      <a class="btn btn-primary mt-2" href="/password" type="button">Change Password</a>
+    </div>
+    <div class="col text-start">
+      <span class="user-info fs-6 fw-normal">cash</span><br>
+      <span class="fs-4 fw-medium">{{ cash | usd }}</span><br><br>
+      <a class="btn btn-primary mt-2" href="/cash" type="button">Add Cash</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

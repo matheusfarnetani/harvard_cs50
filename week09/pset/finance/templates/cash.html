@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add Cash
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <h3>Add Cash</h3>
+</div>
+
+<div class="container mt-3">
+  <form action="/cash" method="post">
+    <div class="mb-3">
+      <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="add-cash" name="add-cash"
+        placeholder="Value" type="number" step="100">
+    </div>
+    <div class="mb-3">
+      <label class="mb-2" for="confirm-password">Confirm Password</label>
+      <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="confirm-password"
+      name="confirm-password" placeholder="Password" type="password">
+    </div>
+    <button class="btn btn-primary" type="submit">Add</button>
+  </form>
+</div>
+{% endblock %}

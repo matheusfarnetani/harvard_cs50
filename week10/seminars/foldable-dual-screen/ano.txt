@@ -1,0 +1,148 @@
+Create responsive app design
+
+Surface Duo 2
+    Product of Microsoft
+    Two screens
+    Front and back cameras
+    Android 11
+    NFC
+    5G
+
+
+Foldable Agenda
+    Responsive design
+        Media queries
+        Enverinment variables
+        Javascripts
+    
+    Testing
+        Browser developer tools (Edge and Chrome)
+
+    Progressive Web Apps (PWA)
+        Starter kit
+    
+    Docs & samples
+        Design Kit guidance
+        Dual-Screen web Docs
+        Other developer platforms
+    
+
+Building apps for foldable/dual-screen devices
+    Web
+
+Responsive Design
+
+Media Queries in CSS
+    @media print {
+        // Styles applied only when printing/previewuing
+        // Set appropieate layouts and colors
+        // (i.e. no background color)
+    }
+    @media screen and (max-width: 699px) {
+        // narrow screens only (like mobile)
+        // hide or shrink elements
+    }
+    <link rel="stylesheet" media="print" href="example.css>
+
+
+    Creating css chunks to control each width of the display
+
+
+    @media print {
+        // styles applied only when printing/previewuing
+        // set appropieate layouts and colors
+
+        // e.g. no background color
+        html {background-color: white;}
+
+        // e.g. hide menus or nav
+        .nav {display:none}
+    }
+
+
+Media queries - screen width
+    @media screen and {max-width: 600px} {
+        // narrow screens only (like mobile)
+    }
+
+    @media screen and (min-width:768px) {
+        // wide screens (like maximized desktop)
+    }
+
+    @media (min-width:768px) {
+        // 'screen' is optional
+        // wide screens (like maximized desktop)
+    }
+
+New media query
+    @media (screen-spanning: single-fold-vertical) {
+        // styles applied in double-portrait (wide) mode
+    }
+
+    @media (screen-spanning: single-fold-horizontal) {
+        // styles applied in double-land-scape (tall) mode
+    }
+
+
+Enviroment variable
+    env(fold-left)
+    env(fold-top)
+    env(fold-width)
+    env(fold-height)
+
+New JavaScripts
+    const screenSegments = window.getWindowSegments();
+
+    if(screenSegments.length > 1 ) {
+        // now we know the device is a foldable
+        // and we can update CSS classes in our layout
+        document.body.classList.add('is-foldable);
+        // other changes as required for layout
+    }
+
+
+Example:
+    @media (screen-spanning: single-fold-vertical) {
+        .yellow {
+            height: 100px;
+            width: calc(100vw - env(fold-left) - env(fold-width));
+            position: absolute
+            left: calc(env(fold-left) + env(fold-width));
+            top: 0;
+            background-color: yellow;
+            text-align: center;
+        }
+    }
+
+Updated media query
+    /* 2 screens horizontal */
+    @media (horizontal-viewport-segments:2) {
+        // styles applied in double-portrait (wide) mode
+    }
+    /* 2 screens vertical */
+    @media (vertical-viewport-segments:2) {
+        // styles applied in double-landscape (tall) mode
+    }
+    /* 3 screens */
+    @media (horizontal-viewport-segments:3) {
+        // styles applied in triple_portrail (really wide) mode
+    }
+
+Updated environment variables
+    'wich screen' 'x' 'y'
+    env(viewport-segment-width 0 0)
+    env(viewport-segment-height 0 0)
+    env(viewport-segment-right 0 0)
+    env(viewport-segment-left 1 0)
+
+Updated JavaScript
+    const screenSegments = window.visualViewport.segments;
+    
+    if(screenSegments) {
+        if(screenSegments.length > 1 ) {
+            // now we know there are multiple segments
+            // and we can updated CSS classes in our layout
+            document.body.classList.add('is-foldable');
+            // other changes as required for layout
+        }
+    }

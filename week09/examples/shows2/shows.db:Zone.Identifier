@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cdn.cs50.net/
+HostUrl=https://s3.amazonaws.com/cdn.cs50.net/2022/fall/lectures/9/src9/shows2/shows.db?response-content-disposition=attachment&response-content-type=application%2Foctet-stream&AWSAccessKeyId=AKIAJWDAOEC2ETXV2L6A&Signature=r8xenlo1wFo81DYxTlBAr5SL3lM%3D&Expires=1692163179

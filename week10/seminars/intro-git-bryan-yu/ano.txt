@@ -1,0 +1,87 @@
+What is Git?
+
+1. Keep track of changes to code
+
+2. Syncronizes code between different people.
+
+3. Test changes to code without losing the original.
+
+4. Revert back to old versions of code.
+
+
+Commands
+
+git clone <url>
+    -   makes a copy of a repository
+    -   stores it on your copmuter
+    -   a "fork" creates your own copy of someone
+        else's repository.
+
+git add <filename>
+    -   adds a file to "staging area"
+    -   tells git to include the file in the next
+        revision to the repository
+
+    -   git aff * adds all changed files
+
+git commit -m "message"
+    -   saves the changes to repository as a new
+        revision (a "commit")
+    
+    -   records a message
+    -   git commit -am "message" adds and commits
+        in the same step
+
+git dif
+    -   shows every tracked changes
+
+git status 
+    -   shows current status of repository
+
+git push
+    -   sends committed changes to remote
+        repository
+    
+    -   more explicitly, could write
+        git push origin master
+
+git pull
+    -   opposite of 'git push'
+    -   retrieves changes from remote repository
+
+
+Merge Conflicts
+    -   When two differents commits can't be
+        automatically merged
+
+    -   need to be resolved
+
+
+git log
+    - shows a history of commits and messages
+
+git reset
+    -   git reset --hard <commit>
+            reverts code back to a previous commit
+    -   git reset --hard origin/master
+            reverts code back to remote repository version
+
+
+Branching
+    -   Branch is a version of the repository
+    -   Each branc has its own commit history and current version.
+
+    git branch
+        -   shows all branches of code
+        -   create a branch with git branch <branch_name>
+        -   switch to ("checkout") a new branch with
+            git checkout <branch_name>
+        -   git checkout -b <branch_name> 
+                to checkout and create new branch
+    
+    git merge
+        -   git merge <branch_name> merges the branch
+            branch_name with current branch
+
+    git branch -D <branch_name>
+        -   delete branch

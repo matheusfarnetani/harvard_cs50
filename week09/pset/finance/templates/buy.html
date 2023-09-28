@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Buy
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <h3>Buy shares</h3>
+  <span class="pt-2">Your cash: </span>
+  <span>{{ user_cash | usd }}</span>
+</div>
+
+<div class="container mt-3">
+  <form action="/buy" method="post">
+    {% if symbol %}
+    <div class="mb-3">
+      <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol"
+        placeholder="Stock's symbol" type="text" value="{{ symbol }}">
+    </div>
+    {% else %}
+    <div class="mb-3">
+      <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol"
+        placeholder="Stock's symbol" type="text">
+    </div>
+    {% endif %}
+    <div class="mb-3">
+      <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares"
+        placeholder="Number of shares" type="number">
+    </div>
+    <button class="btn btn-primary" type="submit">Buy stock</button>
+  </form>
+</div>
+{% endblock %}
